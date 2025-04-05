@@ -1,10 +1,11 @@
+
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x000000);
 
-const camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 2000);
+const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 2000);
 camera.position.set(0, 50, 150);
 
 const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector('#bg') });
@@ -58,21 +59,35 @@ const planetsData = [
 ];
 
 const planets = [];
+let sunActive = true;
 
 planetsData.forEach(data => {
   const geo = new THREE.SphereGeometry(data.size, 32, 32);
   const mat = new THREE.MeshPhongMaterial({ color: data.color });
   const planet = new THREE.Mesh(geo, mat);
-  planet.userData = { angle: Math.random() * Math.PI * 2, distance: data.distance, speed: 0.01 + Math.random() * 0.01 };
+  
+  const angle = Math.random() * Math.PI * 2;
+  const speed = 0.01 + Math.random() * 0.005;
+  const distance = data.distance;
+
+  planet.position.x = distance * Math.cos(angle);
+  planet.position.z = distance * Math.sin(angle);
+
+  planet.userData = {
+    vx: -speed * distance * Math.sin(angle),
+    vz: speed * distance * Math.cos(angle),
+    speed: speed,
+    distance: distance,
+    angle: angle
+  };
+
   planets.push(planet);
   scene.add(planet);
 });
 
 // Malha gravitacional
 const gravityLines = new THREE.Group();
-const gridSize = 200;
-const divisions = 50;
-const gridHelper = new THREE.GridHelper(gridSize, divisions, 0x00ff00, 0x00ff00);
+const gridHelper = new THREE.GridHelper(200, 50, 0x00ff00, 0x00ff00);
 gridHelper.rotation.x = Math.PI / 2;
 gravityLines.add(gridHelper);
 gravityLines.visible = false;
@@ -82,6 +97,12 @@ document.getElementById('gravityToggle').addEventListener('change', (e) => {
   gravityLines.visible = e.target.checked;
 });
 
+document.getElementById('sunToggle').addEventListener('change', (e) => {
+  sunActive = e.target.checked;
+  sunLight.intensity = sunActive ? 2 : 0;
+  ambientLight.intensity = sunActive ? 0.5 : 0.05;
+});
+
 // Controles
 const controls = new OrbitControls(camera, renderer.domElement);
 
@@ -89,9 +110,16 @@ function animate() {
   requestAnimationFrame(animate);
 
   planets.forEach(planet => {
-    planet.userData.angle += planet.userData.speed;
-    planet.position.x = planet.userData.distance * Math.cos(planet.userData.angle);
-    planet.position.z = planet.userData.distance * Math.sin(planet.userData.angle);
+    if (sunActive) {
+      planet.userData.angle += planet.userData.speed;
+      planet.position.x = planet.userData.distance * Math.cos(planet.userData.angle);
+      planet.position.z = planet.userData.distance * Math.sin(planet.userData.angle);
+      planet.userData.vx = -planet.userData.speed * planet.userData.distance * Math.sin(planet.userData.angle);
+      planet.userData.vz = planet.userData.speed * planet.userData.distance * Math.cos(planet.userData.angle);
+    } else {
+      planet.position.x += planet.userData.vx;
+      planet.position.z += planet.userData.vz;
+    }
   });
 
   controls.update();
@@ -101,7 +129,7 @@ function animate() {
 animate();
 
 window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 });

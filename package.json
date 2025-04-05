@@ -1,5 +1,6 @@
+
 {
-  "name": "solar-system-fixed",
+  "name": "solar-system-inertia",
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
