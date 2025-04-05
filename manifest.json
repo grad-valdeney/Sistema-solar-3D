@@ -1,14 +1,15 @@
+
 {
-  "name": "Identificador de Cores",
-  "short_name": "Cores",
+  "name": "Sistema Solar com Dobra Gravitacional",
+  "short_name": "SolarGrav",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
-  "orientation": "portrait",
+  "orientation": "landscape",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/1077/1077035.png",
+      "src": "https://cdn-icons-png.flaticon.com/512/4380/4380705.png",
       "sizes": "512x512",
       "type": "image/png"
     }
