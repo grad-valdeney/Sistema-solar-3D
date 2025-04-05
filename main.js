@@ -32,9 +32,11 @@ function createStars() {
 
 createStars();
 
-// Luz solar
+// Luz solar + ambiente
 const sunLight = new THREE.PointLight(0xffffff, 2, 0);
 scene.add(sunLight);
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);
 
 // Sol
 const sunGeo = new THREE.SphereGeometry(10, 64, 64);
@@ -51,14 +53,15 @@ const planetsData = [
   { name: 'Júpiter', color: 0xffcc66, size: 6, distance: 50 },
   { name: 'Saturno', color: 0xffcc99, size: 5, distance: 65 },
   { name: 'Urano', color: 0x66ffff, size: 4, distance: 78 },
-  { name: 'Netuno', color: 0x3366ff, size: 4, distance: 90 }
+  { name: 'Netuno', color: 0x3366ff, size: 4, distance: 90 },
+  { name: 'Plutão', color: 0x999999, size: 1, distance: 100 }
 ];
 
 const planets = [];
 
 planetsData.forEach(data => {
   const geo = new THREE.SphereGeometry(data.size, 32, 32);
-  const mat = new THREE.MeshStandardMaterial({ color: data.color });
+  const mat = new THREE.MeshPhongMaterial({ color: data.color });
   const planet = new THREE.Mesh(geo, mat);
   planet.userData = { angle: Math.random() * Math.PI * 2, distance: data.distance, speed: 0.01 + Math.random() * 0.01 };
   planets.push(planet);

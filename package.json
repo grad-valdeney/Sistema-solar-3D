@@ -1,5 +1,5 @@
 {
-  "name": "solar-system-textured",
+  "name": "solar-system-fixed",
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",

@@ -1,17 +1,12 @@
-# 🌍 Sistema Solar 3D com Texturas
+# 🌍 Sistema Solar 3D - Corrigido
 
-Visualização 3D do sistema solar com base em imagem de referência. Inclui:
+- Luz ambiente ativada
+- Planetas não ficam mais pretos
+- Pronto para instalação como aplicativo (PWA)
 
-- Texturas realistas dos planetas
-- Plutão incluído
-- Órbitas circulares como ilustração
-- Instalação como app (PWA)
-
-## Rodar localmente
+## Como rodar
 
 ```bash
 npm install
 npm run dev
 ```
-
-Depois, acesse no navegador para visualizar e instalar como aplicativo.
