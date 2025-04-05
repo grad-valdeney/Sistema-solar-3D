@@ -1,15 +1,14 @@
-
 {
-  "name": "Sistema Solar 3D",
-  "short_name": "Solar3D",
+  "name": "Identificador de Cores",
+  "short_name": "Cores",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
-  "orientation": "landscape",
+  "orientation": "portrait",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/4380/4380705.png",
+      "src": "https://cdn-icons-png.flaticon.com/512/1077/1077035.png",
       "sizes": "512x512",
       "type": "image/png"
     }
