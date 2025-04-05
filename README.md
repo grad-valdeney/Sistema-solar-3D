@@ -1,13 +1,13 @@
 
-# 🌌 Sistema Solar 3D com Dobra Gravitacional
+# ☀️ Sistema Solar 3D com Inércia
 
-Este simulador traz:
+Simulação onde os planetas saem da órbita em linha reta se o Sol for desligado.
 
-- Sol desligável (apenas a luz solar se apaga)
-- Planetas continuam visíveis com luz ambiente
-- Malha gravitacional no eixo X
-- Malha forma uma curva sob o Sol e os planetas como uma dobra gravitacional dinâmica
-- Instalação como app (PWA)
+## Recursos
+- 🌞 Sol ativável/desativável
+- 🧲 Malha gravitacional horizontal
+- 🛸 Movimento orbital ou inercial realista
+- 📱 Instalação como aplicativo PWA
 
 ## Como rodar
 
