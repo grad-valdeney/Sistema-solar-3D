@@ -1,18 +1,17 @@
-# 🌍 Sistema Solar 3D - PWA
+# 🌍 Sistema Solar 3D com Texturas
 
-Visualização 3D do sistema solar com estrelas de fundo e suporte a Progressive Web App (PWA).
+Visualização 3D do sistema solar com base em imagem de referência. Inclui:
 
-## Como rodar localmente
+- Texturas realistas dos planetas
+- Plutão incluído
+- Órbitas circulares como ilustração
+- Instalação como app (PWA)
 
-1. Execute:
+## Rodar localmente
 
 ```bash
 npm install
 npm run dev
 ```
 
-2. Acesse no navegador e clique em "Adicionar à tela inicial" para instalar como app.
-
-## Como publicar
-
-Hospede no GitHub Pages, Vercel, Netlify ou Replit. O navegador reconhecerá como aplicativo.
+Depois, acesse no navegador para visualizar e instalar como aplicativo.
