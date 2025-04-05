@@ -1,15 +1,18 @@
-# 🪐 Sistema Solar 3D
+# 🌍 Sistema Solar 3D - PWA
 
-Visualização 3D interativa do sistema solar com órbitas simplificadas. Inclui opção de exibir uma malha gravitacional.
+Visualização 3D do sistema solar com estrelas de fundo e suporte a Progressive Web App (PWA).
 
-## Como rodar
+## Como rodar localmente
 
-1. Abra o repositório no GitHub Codespaces.
-2. Execute os comandos:
+1. Execute:
 
 ```bash
 npm install
 npm run dev
 ```
 
-3. Clique em "Open in Browser" para visualizar.
+2. Acesse no navegador e clique em "Adicionar à tela inicial" para instalar como app.
+
+## Como publicar
+
+Hospede no GitHub Pages, Vercel, Netlify ou Replit. O navegador reconhecerá como aplicativo.

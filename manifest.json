@@ -1,0 +1,16 @@
+{
+  "name": "Sistema Solar 3D",
+  "short_name": "Solar3D",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "landscape",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/4380/4380705.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

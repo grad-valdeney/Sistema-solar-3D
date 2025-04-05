@@ -11,6 +11,27 @@ const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector('#bg')
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 
+// Estrelas 3D
+function createStars() {
+  const starGeometry = new THREE.BufferGeometry();
+  const starCount = 10000;
+  const positions = [];
+
+  for (let i = 0; i < starCount; i++) {
+    const x = (Math.random() - 0.5) * 2000;
+    const y = (Math.random() - 0.5) * 2000;
+    const z = (Math.random() - 0.5) * 2000;
+    positions.push(x, y, z);
+  }
+
+  starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  const starMaterial = new THREE.PointsMaterial({ color: 0xffffff, size: 0.7 });
+  const starField = new THREE.Points(starGeometry, starMaterial);
+  scene.add(starField);
+}
+
+createStars();
+
 // Luz solar
 const sunLight = new THREE.PointLight(0xffffff, 2, 0);
 scene.add(sunLight);
@@ -21,7 +42,7 @@ const sunMat = new THREE.MeshBasicMaterial({ color: 0xffff00 });
 const sun = new THREE.Mesh(sunGeo, sunMat);
 scene.add(sun);
 
-// Planetas simplificados
+// Planetas
 const planetsData = [
   { name: 'Mercúrio', color: 0xaaaaaa, size: 1, distance: 15 },
   { name: 'Vênus', color: 0xffcc99, size: 2, distance: 22 },
@@ -64,7 +85,6 @@ const controls = new OrbitControls(camera, renderer.domElement);
 function animate() {
   requestAnimationFrame(animate);
 
-  // Movimento dos planetas
   planets.forEach(planet => {
     planet.userData.angle += planet.userData.speed;
     planet.position.x = planet.userData.distance * Math.cos(planet.userData.angle);
